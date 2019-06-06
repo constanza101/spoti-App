@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { map } from "rxjs/operators";
+import { map } from 'rxjs/operators';
 
 
 @Injectable({
@@ -8,45 +8,36 @@ import { map } from "rxjs/operators";
 })
 export class SpotifyService {
 
-  
 
-  constructor(private _http: HttpClient) { 
+
+  constructor(private _http: HttpClient) {
     console.log('spotify service working');
   }
 
-  getNewReleases(){
-    const URL = 'https://api.spotify.com/v1/browse/new-releases';
-    let headers = new HttpHeaders({
-      'Authorization': 'Bearer BQAEXcO4bFf_eG_3ZZxdWT43AHfbzIK0cRIj-coCaoq2UCNYcYfuXrOEGZrTxm_jW7gCwdnBE7aD259ciqU'
+  getQuery( query: string ) {
+    const URL = `https://api.spotify.com/v1/${query}`;
+
+    const headers = new HttpHeaders({
+      'Authorization': 'Bearer BQDO9p-pmIUHwrpc6j7aMnIhrHJIOmJk1MaHhGpAMwXvjF_O_v48t_cp5unClx87a5o3Zfr1gK1R0Xw8UwI'
     });
 
-    return this._http.get(URL, {headers})
-      .pipe( map( data => {
-        console.log(data);
-        return data['albums'].items;
-      }));
-/*     .subscribe(data => console.log(data)
-      );
-      // subscribe method will be done in the components
-*/
+    return this._http.get(URL, {headers});
   }
 
-  getArtist( term: string ){
-    
-    const URL = `https://api.spotify.com/v1/search?query=${term}&type=artist&market=ES&offset=0&limit=10`
-  
-    let headers = new HttpHeaders({
-      'Authorization': 'Bearer BQAEXcO4bFf_eG_3ZZxdWT43AHfbzIK0cRIj-coCaoq2UCNYcYfuXrOEGZrTxm_jW7gCwdnBE7aD259ciqU'
-    });
+  getNewReleases() {
+    const URL_PARAMS = 'browse/new-releases';
 
 
-    
-    return this._http.get(URL, {headers})
-      .pipe( map( data => {
-        console.log(data['artists'].items);
-        return data['artists'].items;
+    return this.getQuery(URL_PARAMS)
+          .pipe( map( data => data['albums'].items));
+  }
 
-      }));
+  getArtist( term: string ) {
+
+    const URL_PARAMS = `search?query=${term}&type=artist&market=ES&offset=0&limit=10`;
+
+    return this.getQuery(URL_PARAMS)
+      .pipe( map( data => data['artists'].items));
 
   }
 
