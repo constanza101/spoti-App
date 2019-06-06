@@ -10,13 +10,13 @@ import { HomeComponent } from './components/home/home.component';
 import { SearchComponent } from './components/search/search.component';
 import { ArtistComponent } from './components/artist/artist.component';
 import { NavbarComponent } from './components/shared/navbar/navbar.component';
+import { CardsComponent } from './components/shared/cards/cards.component';
 
 // routes
 import { ROUTES } from './app.routes';
 
 // pipes
 import { NoimagePipe } from './pipes/noimage.pipe';
-import { CardsComponent } from './components/search/components/shared/cards/cards.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +26,7 @@ import { CardsComponent } from './components/search/components/shared/cards/card
     ArtistComponent,
     NavbarComponent,
     NoimagePipe,
-    CardsComponent
+    CardsComponent,
   ],
   imports: [
     BrowserModule,
@@ -34,6 +34,6 @@ import { CardsComponent } from './components/search/components/shared/cards/card
     RouterModule.forRoot( ROUTES, { useHash: true } )
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule { }
