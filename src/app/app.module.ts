@@ -11,6 +11,7 @@ import { SearchComponent } from './components/search/search.component';
 import { ArtistComponent } from './components/artist/artist.component';
 import { NavbarComponent } from './components/shared/navbar/navbar.component';
 import { CardsComponent } from './components/shared/cards/cards.component';
+import { LoadingComponent } from './components/shared/loading/loading.component';
 
 // routes
 import { ROUTES } from './app.routes';
@@ -27,6 +28,7 @@ import { NoimagePipe } from './pipes/noimage.pipe';
     NavbarComponent,
     NoimagePipe,
     CardsComponent,
+    LoadingComponent,
   ],
   imports: [
     BrowserModule,
