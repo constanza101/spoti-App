@@ -39,7 +39,8 @@ export class SpotifyService {
       'Authorization': 'Bearer BQAEXcO4bFf_eG_3ZZxdWT43AHfbzIK0cRIj-coCaoq2UCNYcYfuXrOEGZrTxm_jW7gCwdnBE7aD259ciqU'
     });
 
-
+//hola
+    
     return this._http.get(URL, {headers})
       .pipe( map( data => {
         console.log(data['artists'].items);
